@@ -1,11 +1,49 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
-    \chapter{Hola como estas}
-    \[
-        \lim_{n\to\infty} \sum_{i=1}^n f(x_i^*)\Delta x = \int_a^b f(x)\, dx
-    \]
+\chapter{Primer capitulo}
 
-    \section*{No lo se}
+\lipsum[1]
+
+\section{Entornos}
+
+\teorema{Teorema Fundamental del cálculo}{
+    Este teorema es fundamental para el cálculo muestra la estrecha relación entre la integral y la derivada.
+
+    \[
+        \frac{d}{dx}\int f(x)\, dx = f(x)  
+    \]
+}
+
+\demostracion{
+    La demostración queda como ejercicio para el lector.
+}
+
+\newpage
+
+\corolario{Segundo teorema fundamental del calculo}{
+    Sea $F(X)=\int f(x)\, dx$ entonces:
     
+    \[\int_a^b f(x)\,dx = F(a)-F(b)\]
+}
+
+\nota{Notación}{}{
+    Una notación utilizada para representar esto es la siguiente:
+
+    \[
+        \int_a^b f(x)\, dx = \left. F(x) \right|_b^a 
+    \]
+}
+
+
+\section{Lógica}
+
+\lema{Tercer excluido}{
+    \[\vdash_{LP} \alpha \lor \neg \alpha \]
+}
+
+\lipsum[1]
+
+
+
 \end{document}
