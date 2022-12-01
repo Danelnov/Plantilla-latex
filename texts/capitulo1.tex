@@ -1,11 +1,12 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
-\chapter{Primer capitulo}
+\chapter{Entornos definidos}
 
 \lipsum[1]
 
-\section{Entornos}
+
+\section{Teoremas}
 
 \teorema{Teorema Fundamental del cálculo}{
     Este teorema es fundamental para el cálculo muestra la estrecha relación entre la integral y la derivada.
@@ -15,11 +16,7 @@
     \]
 }
 
-\demostracion{
-    La demostración queda como ejercicio para el lector.
-}
-
-\newpage
+\section{Corolario}
 
 \corolario{Segundo teorema fundamental del calculo}{
     Sea $F(X)=\int f(x)\, dx$ entonces:
@@ -27,7 +24,9 @@
     \[\int_a^b f(x)\,dx = F(a)-F(b)\]
 }
 
-\nota{Notación}{}{
+\section{Nota}
+
+\nota{Notación}{
     Una notación utilizada para representar esto es la siguiente:
 
     \[
@@ -35,15 +34,54 @@
     \]
 }
 
-
-\section{Lógica}
+\section{Lema}
 
 \lema{Tercer excluido}{
     \[\vdash_{LP} \alpha \lor \neg \alpha \]
 }
 
-\lipsum[1]
+\section{Preposición}
 
+\preposicion{Una preposición}{
+    Esto es una preposicion
+}
 
+\section{Definición}
+
+\dfe{Una definición cualquiera}{
+    \lipsum[1]
+}
+
+\section{Otros entornos}
+
+\ejemplo{
+    Esto es un ejemplo
+
+    \solucion{
+        Esta es la solución del ejemplo
+    }
+}
+
+\demostracion{
+    La demostración queda como ejercicio para el lector.
+}
+
+\section{Listas}
+
+Listas enumeradas
+
+\listo{
+    \item Primero item
+    \item Segundo item
+    \item Tercer item
+}
+
+Listas con puntos
+
+\listu{
+    \item Primero item
+    \item Segundo item
+    \item Tercer item
+}
 
 \end{document}
