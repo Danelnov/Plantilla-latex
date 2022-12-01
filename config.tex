@@ -73,7 +73,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{Teorema}{\large Teorema}
+\newtcbtheorem[number within=chapter]{Teorema}{\large Teorema}
 {%
     enhanced,
     breakable,
@@ -109,7 +109,7 @@
 % Corollery
 %================================
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{Corolario}{\large Corolario}
+\newtcbtheorem[number within=chapter]{Corolario}{\large Corolario}
 {%
     enhanced
     ,breakable
@@ -134,7 +134,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{Lema}{\large Lema}
+\newtcbtheorem[number within=chapter]{Lema}{\large Lema}
 {%
     enhanced,
     breakable,
@@ -158,7 +158,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{Prepo}{\large Preposición}
+\newtcbtheorem[number within=chapter]{Prepo}{\large Preposición}
 {%
     enhanced,
     breakable,
@@ -183,7 +183,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{defi}{\large Definición}
+\newtcbtheorem[number within=chapter]{defi}{\large Definición}
 {%
     enhanced
     ,breakable
@@ -207,7 +207,7 @@
 %==============
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{Nota}{\large Nota}
+\newtcbtheorem[no counter]{Nota}{\large Nota}
 {%
     enhanced,
     breakable,
@@ -238,11 +238,11 @@
 \newcommand{\demostracion}[1]{\begin{proof}[\color{primary}\textbf{Demostración.}] #1 \end{proof}}
 
 \theoremstyle{definition}
-\newtheorem{ejem}{\color{primary}Ejemplo}
+\newtheorem*{ejem}{\color{primary}Ejemplo}
 \newcommand{\ejemplo}[1]{\begin{ejem}#1\end{ejem}}
 
 \theoremstyle{definition}
-\newtheorem{solu}{\color{primary}Solución}
+\newtheorem*{solu}{\color{primary}Solución}
 \newcommand{\solucion}[1]{\begin{solu}#1\end{solu}}
 
 %---------------
