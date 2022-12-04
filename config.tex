@@ -1,43 +1,35 @@
 %----------------
 %   Importaciones
 %----------------
-
-\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=4cm,footskip=.7in]{geometry}
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
 \usepackage{graphicx, wrapfig, subcaption, setspace, booktabs}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \usepackage{xcolor}
-\usepackage[protrusion=true, expansion=true]{microtype}
-\usepackage{xparse}
 \usepackage[scaled]{helvet}     % Fuente del documento
 \renewcommand{\familydefault}{\sfdefault}
-% Matemáticas
-\usepackage{amsmath,amssymb,amsfonts,latexsym,cancel,amsthm}
+\usepackage{amsmath,amssymb,amsfonts,latexsym,cancel,amsthm,mathtools}
 \usepackage[utf8]{inputenc}
-% \usepackage{sectsty}    % Cambiar el estilo de cualquier cabecera
 \usepackage{url, lipsum}
 \usepackage{tabularx}
-\usepackage{float}
-% Colores para codigo
-\usepackage{minted}
+\usepackage{xparse}
+\usepackage{sectsty}
+
+% \setlength{\parindent}{0cm}
+% \setlength{\parskip}{5pt}
 
 %-----------------
 %   Colores
 %-----------------
-\definecolor{myg}{RGB}{56, 140, 70}
-\definecolor{myb}{RGB}{45, 111, 177}
-\definecolor{myr}{RGB}{199, 68, 64}
 \definecolor{mytheorembg}{HTML}{F2F2F9}
-\definecolor{mytheoremfr}{HTML}{00007B}
 \definecolor{mylenmabg}{HTML}{FFFAF8}
 \definecolor{mylenmafr}{HTML}{983b0f}
 \definecolor{mypropbg}{HTML}{f2fbfc}
 \definecolor{mypropfr}{HTML}{191971}
 \definecolor{myp}{RGB}{197, 92, 212}
-\definecolor{}{HTML}{2C3338}
 \definecolor{primary}{RGB}{32, 123, 165}    % Color principal
 \definecolor{migris}{RGB}{17, 17, 17}
-\definecolor{grisfondo}{RGB}{239, 239, 239}
+\definecolor{grisfondo}{RGB}{249, 249, 249}
 
 
 %----------------
@@ -52,179 +44,41 @@
     urlcolor=blue,
 }
 
-
-%--------------
-%   Encabezado
-%--------------
-% \onehalfspacing
-% \setcounter{tocdepth}{5}
-% \setcounter{secnumdepth}{5}
-
 %----------------
 %   Cajas
 %----------------
 
 \usepackage[most]{tcolorbox}
 
-\setlength{\parindent}{1cm}
-
-%================================
-% THEOREM BOX
-%================================
-
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{Teorema}{\large Teorema}
-{%
-    enhanced,
-    breakable,
-    colback = mytheorembg,
-    frame hidden,
-    boxrule = 0sp,
-    borderline west = {2pt}{0pt}{primary},
-    sharp corners,
-    detach title,
-    fonttitle = \bfseries\sffamily,
-    before upper = \tcbtitle\par\smallskip,
-    coltitle = primary,
-    separator sign none,
-    segmentation style={solid, primary},
-}
-{th}
-
-\tcbuselibrary{theorems,skins,hooks}
-\newtcolorbox{Theoremcon}
-{%
-    enhanced
-    ,breakable
-    ,colback = mytheorembg
-    ,frame hidden
-    ,boxrule = 0sp
-    ,borderline west = {2pt}{0pt}{primary}
-    ,sharp corners
-    ,description font = \mdseries
-    ,separator sign none
+\NewDocumentCommand\caja{m O{\Large #1} O{grisfondo} O{primary} O{number within=chapter}}
+{
+    \newtcbtheorem[#5]{#1}{\large #2}
+    {%
+        enhanced
+        ,breakable
+        ,colback = #3
+        ,frame hidden
+        ,boxrule = 0sp
+        ,borderline west = {2pt}{0pt}{#4}
+        ,sharp corners
+        ,detach title
+        ,before upper = \tcbtitle\par\smallskip
+        ,coltitle = #4
+        ,fonttitle = \bfseries\sffamily
+        % ,description font = \mdseries
+        ,separator sign none
+        ,segmentation style={solid, #4}
+    }
+    {th}
 }
 
-%================================
-% Corollery
-%================================
-\tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{Corolario}{\large Corolario}
-{%
-    enhanced
-    ,breakable
-    ,colback = myp!10
-    ,frame hidden
-    ,boxrule = 0sp
-    ,borderline west = {2pt}{0pt}{myp!85!black}
-    ,sharp corners
-    ,detach title
-    ,before upper = \tcbtitle\par\smallskip
-    ,coltitle = myp!85!black
-    ,fonttitle = \bfseries\sffamily
-    ,description font = \mdseries
-    ,separator sign none
-    ,segmentation style={solid, myp!85!black}
-}
-{th}
-
-
-%================================
-% LENMA
-%================================
-
-\tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{Lema}{\large Lema}
-{%
-    enhanced,
-    breakable,
-    colback = mylenmabg,
-    frame hidden,
-    boxrule = 0sp,
-    borderline west = {2pt}{0pt}{mylenmafr},
-    sharp corners,
-    detach title,
-    before upper = \tcbtitle\par\smallskip,
-    coltitle = mylenmafr,
-    fonttitle = \bfseries\sffamily,
-    description font = \mdseries,
-    separator sign none,
-    segmentation style={solid, mylenmafr},
-}
-{th}
-
-%================================
-% PROPOSITION
-%================================
-
-\tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{Prepo}{\large Preposición}
-{%
-    enhanced,
-    breakable,
-    colback = mypropbg,
-    frame hidden,
-    boxrule = 0sp,
-    borderline west = {2pt}{0pt}{mypropfr},
-    sharp corners,
-    detach title,
-    before upper = \tcbtitle\par\smallskip,
-    coltitle = mypropfr,
-    fonttitle = \bfseries\sffamily,
-    description font = \mdseries,
-    separator sign none,
-    segmentation style={solid, mypropfr},
-}
-{th}
-
-
-%================================
-% Definición
-%================================
-
-\tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{defi}{\large Definición}
-{%
-    enhanced
-    ,breakable
-    ,colback = primary!10
-    ,frame hidden
-    ,boxrule = 0sp
-    ,borderline west = {2pt}{0pt}{primary}
-    ,sharp corners
-    ,detach title
-    ,before upper = \tcbtitle\par\smallskip
-    ,coltitle = primary!85!black
-    ,fonttitle = \bfseries\sffamily
-    ,description font = \mdseries
-    ,separator sign none
-    ,segmentation style={solid, primary!85!black}
-}
-{th}
-
-%==============
-%   Nota
-%==============
-
-\tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[no counter]{Nota}{\large Nota}
-{%
-    enhanced,
-    breakable,
-    colback = white,
-    frame hidden,
-    boxrule = 0sp,
-    borderline west = {2pt}{0pt}{migris},
-    sharp corners,
-    detach title,
-    before upper = \tcbtitle\par\smallskip,
-    coltitle = migris,
-    fonttitle = \bfseries\sffamily,
-    description font = \mdseries,
-    separator sign none,
-    segmentation style={solid, migris},
-}
-{th}
+\caja{Corolario}[Corolario][myp!10][myp!85!black]
+\caja{Lema}[Lema][mylenmabg][mylenmafr]
+\caja{Prepo}[Preposición][mypropbg][mypropfr]
+\caja{defi}[Definición][white][primary!85!black]
+\caja{Nota}[Nota][grisfondo][migris][no counter]
+\caja{Teorema}[Teorema][mytheorembg][primary]
 
 %---------------
 %   Comandos
@@ -272,46 +126,10 @@
     \end{itemize}
 }
 
-
-%-----------
-%   Codigo
-%-----------
-% Caja de codigo
-\tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem{Codigo}{}
-{%
-    enhanced,
-    breakable,
-    colback = grisfondo,
-    frame hidden,
-    boxrule = 0sp,
-    borderline west = {2pt}{0pt}{primary},
-    sharp corners,
-    detach title,
-    % before upper = \tcbtitle\par\smallskip,
-    coltitle = primary,
-    fonttitle = \bfseries\sffamily,
-    description font = \mdseries,
-    separator sign none,
-    segmentation style={solid, primary},
-}
-{th}
-
-\newcommand{\codigo}[2]{
-    \begin{Codigo}{#1}{}
-        #2
-    \end{Codigo}
-}
-
-%-------------------------
-%   Tabla de contenidos
-%-------------------------
-\usepackage{titlesec, blindtext}
+\usepackage{blindtext}
 \usepackage{framed}
 \usepackage{titletoc}
 \usepackage{etoolbox}
-\usepackage{lmodern}
-
 
 \patchcmd{\tableofcontents}{\contentsname}{\sffamily\contentsname}{}{}
 
@@ -323,19 +141,77 @@
 {\endMakeFramed}
 
 \titlecontents{chapter}[0em]
-    {\vspace*{2\baselineskip}}
-    {\parbox{4.5em}{%
-        \hfill\Huge\sffamily\bfseries\color{primary}\thecontentspage}%
-        \vspace*{-2.3\baselineskip}\leftbar\textsc{\small\chaptername~\thecontentslabel}
-        \\\sffamily
-    }
-    {}{\endleftbar}
+{\vspace*{2\baselineskip}}
+{\parbox{4.5em}{%
+        \hfill\Huge\sffamily\bfseries\color{primary}\thecontentslabel}%
+    \vspace*{-2.3\baselineskip}\leftbar\textbf{\color{primary}\small\chaptername~\thecontentslabel}\\\sffamily
+}{}{\endleftbar}
+
+\titlecontents{section}[8.4em]
+{\sffamily\contentslabel{3em}}{}{}
+{\hspace{0.5em}\nobreak\itshape\color{primary}\contentspage}
+
+\titlecontents{subsection}[8.4em]
+{\sffamily\contentslabel{3em}}{}{}
+{\hspace{0.5em}\nobreak\itshape\color{primary}\contentspage}
 
 %-----------------------------
 %   Formato de los capitulos
 %-----------------------------
-\newcommand{\hsp}{\hspace{20pt}}
-\titleformat{\chapter}[hang]
-    {\Huge\bfseries}
-    {\thechapter\hsp\textcolor{primary}{|}\hsp}
-    {0pt}{\Huge\bfseries}
+\newtcolorbox{titlecolorbox}[1]{ %the box around chapter
+    coltext=white,
+    colframe=primary,
+    colback=primary,
+    boxrule=0pt,
+    arc=0pt,
+    notitle,
+    width=4.8em,
+    height=2.4ex,
+    before=\hfill
+}
+
+\usepackage[explicit]{titlesec}
+
+\makeatletter
+\let\old@rule\@rule
+\def\@rule[#1]#2#3{\textcolor{primary}{\old@rule[#1]{#2}{#3}}}
+\makeatother
+
+\titleformat{\chapter}[display]
+{\sffamily\Huge}
+{}
+{0pt}
+{\begin{titlecolorbox}{}
+        {\large\sffamily\MakeUppercase{\chaptername}}
+    \end{titlecolorbox}
+    \vspace*{-4.19ex}\noindent\rule{\textwidth}{0.4pt}
+    \parbox[b]{\dimexpr\textwidth-4.8em\relax}{\raggedright\MakeUppercase{#1}}{\hfill\fontsize{70}{60}\selectfont{\color{primary}\thechapter}}
+}
+[]
+
+\titleformat{name=\chapter,numberless}[display]
+{\sffamily\Huge}
+{}
+{0pt}
+{
+    \vspace*{-4.19ex}\noindent\rule{\textwidth}{0.4pt}
+    \parbox[b]{\dimexpr\textwidth-4.8em\relax}{\raggedright\MakeUppercase{#1}}
+}
+[]
+
+% Secciones
+% \renewcommand*\thesection{\arabic{section}}
+
+\titleformat{\section}[hang]{\Large\bfseries\sffamily}%
+{\rlap{\color{primary}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{primary}{%
+           \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
+                \fontfamily{phv}\selectfont\color{white}{\thesection}}
+            }}}%
+{15pt}%
+{ \color{primary}#1
+%
+}
+\titlespacing*{\section}{0pt}{3mm}{5mm}
+
+% Sub secciones
+\subsectionfont{\Large\color{primary}}

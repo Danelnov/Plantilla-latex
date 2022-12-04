@@ -4,50 +4,13 @@
 % Paquete para trabajar con multiples archivos
 \usepackage{subfiles}
 
-\title{Notas de x tema}
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
 
 \begin{document}
-
-\begin{titlepage}
-    \colorbox{primary}{
-        \parbox[t]{0.93\textwidth}{
-            \parbox[t]{0.91\textwidth}{
-                \raggedleft
-                \fontsize{50pt}{80pt}\selectfont
-                \vspace{0.7cm}
-                \textbf{
-                    \color{white}
-                    Plantilla de \\
-                    LaTeX \\
-                    Para notas \\
-                }
-                \vspace{0.7cm}
-            }
-        }
-    }
-
-    \vfill
-
-    %------------------------------------------------
-    %	Author name and information
-    %------------------------------------------------
-
-    \parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
-    \raggedleft % Right align the text
-    \large % Increase the font size
-    {\Large Nombre}\\[4pt] % Extra space after name
-    Asignatura\\[4pt]
-    {\color{primary}
-    \hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
-    }
-    }
-
-\end{titlepage}
 
 \tableofcontents
 
 \subfile{texts/capitulo1.tex}
-
 \subfile{texts/capitulo2.tex}
-
+    
 \end{document}

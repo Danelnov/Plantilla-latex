@@ -1,41 +1,17 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
+    \chapter{Hola como estas}
 
-\chapter{Codigo para entornos}
+    \lipsum[2]
 
-Se usa el comando \mintinline[bgcolor=grisfondo]{latex}|\teorema| y toma como primer argumento el titulo del teorema y como segundo argumento la descripción del teorema.
+    \section{Esto es una sección}
 
-\nota{}{
-    En general todos los entornos tienen esta estructura
-}
+    \lipsum[1]
 
-\begin{minted}[bgcolor=grisfondo]{latex}
-    \teorema{Titulo}{
-        El teorema
-    }
-\end{minted}
+    \section{Otro capitulo}
 
-\begin{minted}[bgcolor=grisfondo]{latex}
-    \corolario{Titulo}{
-        Descripcion
-    }
-\end{minted}
-
-\section{Comandos de los entornos}
-
-\listo{
-    \item {\color{primary}\bf Teorema} \mintinline[bgcolor=grisfondo]{latex}|\teorema{titulo}{descripción}|
-    \item {\color{primary}\bf Corolario} \mintinline[bgcolor=grisfondo]{latex}|\corolario{titulo}{descripción}|
-    \item {\color{primary}\bf Nota} \mintinline[bgcolor=grisfondo]{latex}|\nota{titulo}{descripción}|
-    \item {\color{primary}\bf Lema} \mintinline[bgcolor=grisfondo]{latex}|\lema{titulo}{descripción}|
-    \item {\color{primary}\bf Preposición} \mintinline[bgcolor=grisfondo]{latex}|\preposicion{titulo}{descripción}|
-    \item {\color{primary}\bf Definición} \mintinline[bgcolor=grisfondo]{latex}|\dfe{titulo}{descripción}|
-    \item {\color{primary}\bf Ejemplo} \mintinline[bgcolor=grisfondo]{latex}|\ejemplo{descripción}|
-    \item {\color{primary}\bf Solución} \mintinline[bgcolor=grisfondo]{latex}|\solucion{descripción}|
-    \item {\color{primary}\bf Demostración} \mintinline[bgcolor=grisfondo]{latex}|\demostracion{descripción}|
-    \item {\color{primary}\bf Lista enumerada} \mintinline[bgcolor=grisfondo]{latex}|\listo{\item item}|
-    \item {\color{primary}\bf Lista} \mintinline[bgcolor=grisfondo]{latex}|\listu{\item item}|
-}
-
+    \lipsum[1]
+    \subsection{Hola como estas}
+    \subsection*{No lo se}
 \end{document}
