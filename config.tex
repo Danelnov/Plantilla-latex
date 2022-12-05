@@ -27,7 +27,7 @@
 \definecolor{mypropbg}{HTML}{f2fbfc}
 \definecolor{mypropfr}{HTML}{191971}
 \definecolor{myp}{RGB}{197, 92, 212}
-\definecolor{primary}{RGB}{32, 123, 165}    % Color principal
+\definecolor{primary}{HTML}{207ba5}    % Color principal
 \definecolor{migris}{RGB}{17, 17, 17}
 \definecolor{grisfondo}{RGB}{249, 249, 249}
 
@@ -76,9 +76,9 @@
 \caja{Corolario}[Corolario][myp!10][myp!85!black]
 \caja{Lema}[Lema][mylenmabg][mylenmafr]
 \caja{Prepo}[Preposición][mypropbg][mypropfr]
-\caja{defi}[Definición][white][primary!85!black]
+\caja{defi}[Definición][primary!7][primary]
 \caja{Nota}[Nota][grisfondo][migris][no counter]
-\caja{Teorema}[Teorema][mytheorembg][primary]
+\caja{Teorema}[Teorema][primary!7][primary]
 
 %---------------
 %   Comandos
@@ -126,6 +126,10 @@
     \end{itemize}
 }
 
+%-------------------------
+% Tabla de Contenidos
+%-------------------------
+
 \usepackage{blindtext}
 \usepackage{framed}
 \usepackage{titletoc}
@@ -158,6 +162,10 @@
 %-----------------------------
 %   Formato de los capitulos
 %-----------------------------
+
+%==================
+% Capitulos
+%==================
 \newtcolorbox{titlecolorbox}[1]{ %the box around chapter
     coltext=white,
     colframe=primary,
@@ -199,19 +207,81 @@
 }
 []
 
+%==============
 % Secciones
-% \renewcommand*\thesection{\arabic{section}}
+%==============
 
 \titleformat{\section}[hang]{\Large\bfseries\sffamily}%
 {\rlap{\color{primary}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{primary}{%
-           \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
+        \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
                 \fontfamily{phv}\selectfont\color{white}{\thesection}}
-            }}}%
+        }}}%
 {15pt}%
 { \color{primary}#1
-%
+    %
 }
 \titlespacing*{\section}{0pt}{3mm}{5mm}
 
-% Sub secciones
+%================
+% Sun secciones
+%================
 \subsectionfont{\Large\color{primary}}
+
+%---------------------
+% Portada
+%---------------------
+\usetikzlibrary{ shapes.geometric }
+\usetikzlibrary{calc}
+\usepackage{anyfontsize}
+\newcommand{\portada}[3]{
+    \begin{tikzpicture}[remember picture,overlay]
+        %%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%
+        \fill[primary] (current page.south west) rectangle (current page.north east);
+
+
+        \foreach \i in {2.5,...,22}
+            {
+                \node[rounded corners,primary!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.west)+(2.5,-5)$) {} ;
+            }
+
+        %%%%%%%%%%%%%%%%%%%% Background Polygon %%%%%%%%%%%%%%%%%%%% 
+        \foreach \i in {0.5,...,22}
+            {
+                \node[rounded corners,primary!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north west)+(2.5,0)$) {} ;
+            }
+
+        \foreach \i in {0.5,...,22}
+            {
+                \node[rounded corners,primary!90,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north east)+(0,-9.5)$) {} ;
+            }
+
+
+        \foreach \i in {21,...,6}
+            {
+                \node[primary!85,rounded corners,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.south east)+(-0.2,-0.45)$) {} ;
+            }
+
+
+        %%%%%%%%%%%%%%%%%%%% Title of the Report %%%%%%%%%%%%%%%%%%%% 
+        \node[left,primary!5,minimum width=0.625*\paperwidth,minimum height=3cm, rounded corners] at ($(current page.north east)+(0,-9.5)$)
+        {
+            {\fontsize{25}{30} \selectfont \bfseries #1}
+        };
+
+        %%%%%%%%%%%%%%%%%%%% Subtitle %%%%%%%%%%%%%%%%%%%% 
+        \node[left,primary!10,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.north east)+(0,-11)$)
+        {
+            {\huge \textit{#2}}
+        };
+
+        %%%%%%%%%%%%%%%%%%%% Author Name %%%%%%%%%%%%%%%%%%%% 
+        \node[left,primary!5,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.north east)+(0,-13)$)
+        {
+            {\Large \textsc{#3}}
+        };
+
+        %%%%%%%%%%%%%%%%%%%% Year %%%%%%%%%%%%%%%%%%%% 
+        \node[rounded corners,fill=primary!70,text =primary!5,regular polygon,regular polygon sides=6, minimum size=2.5 cm,inner sep=0,ultra thick] at ($(current page.west)+(2.5,-5)$) {\LARGE \bfseries \the\year{}};
+
+    \end{tikzpicture}
+}
