@@ -190,7 +190,7 @@
 {}
 {0pt}
 {\begin{titlecolorbox}{}
-        {\large\sffamily\MakeUppercase{\chaptername}}
+        {\large\sffamily\MakeUppercase{\bf\chaptername}}
     \end{titlecolorbox}
     \vspace*{-4.19ex}\noindent\rule{\textwidth}{0.4pt}
     \parbox[b]{\dimexpr\textwidth-4.8em\relax}{\raggedright\MakeUppercase{#1}}{\hfill\fontsize{70}{60}\selectfont{\color{primary}\thechapter}}
@@ -212,7 +212,7 @@
 %==============
 
 \titleformat{\section}[hang]{\Large\bfseries\sffamily}%
-{\rlap{\color{primary}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{primary}{%
+{\rlap{\color{primary}\rule[-6pt]{\textwidth}{0.4pt}}\colorbox{primary}{%
         \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
                 \fontfamily{phv}\selectfont\color{white}{\thesection}}
         }}}%
