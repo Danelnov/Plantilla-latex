@@ -1,19 +1,11 @@
 %----------------
 %   Importaciones
 %----------------
-\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
-\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs}
-\usepackage[T1]{fontenc}
-\usepackage[spanish]{babel}
-\usepackage{xcolor}
-\usepackage[scaled]{helvet}     % Fuente del documento
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{amsmath,amssymb,amsfonts,latexsym,cancel,amsthm,mathtools}
-\usepackage[utf8]{inputenc}
-\usepackage{url, lipsum}
-\usepackage{tabularx}
 \usepackage{xparse}
 \usepackage{sectsty}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb,amsfonts,latexsym,cancel,amsthm,mathtools}
+
 
 % \setlength{\parindent}{0cm}
 % \setlength{\parskip}{5pt}
@@ -30,6 +22,7 @@
 \definecolor{primary}{HTML}{207ba5}    % Color principal
 \definecolor{migris}{RGB}{17, 17, 17}
 \definecolor{grisfondo}{RGB}{249, 249, 249}
+\definecolor{MyGrey}{HTML}{5B5B5B}
 
 
 %----------------
@@ -50,8 +43,26 @@
 
 \usepackage[most]{tcolorbox}
 
+\newcommand\fancybox[3]{%
+    \tcbset{
+        mybox/.style={
+                enhanced,
+                boxsep=0mm,
+                opacityfill=0,
+                overlay={
+                        \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+                        \node[align=right, text=#1, text width=2.5cm, anchor=north east] at (X) {\bf#2};
+                        \draw[line width=0.5mm, color=#1] (frame.north west) -- (frame.south west);
+                    }
+            }
+    }
+    \begin{tcolorbox}[mybox]
+        #3
+    \end{tcolorbox}
+}
+
 \tcbuselibrary{theorems,skins,hooks}
-\NewDocumentCommand\caja{m O{\Large #1} O{grisfondo} O{primary} O{number within=chapter}}
+\NewDocumentCommand\caja{m O{\Large #1} O{grisfondo} O{primary} O{number within=section}}
 {
     \newtcbtheorem[#5]{#1}{\large #2}
     {%
@@ -76,9 +87,9 @@
 \caja{Corolario}[Corolario][myp!10][myp!85!black]
 \caja{Lema}[Lema][mylenmabg][mylenmafr]
 \caja{Prepo}[Preposición][mypropbg][mypropfr]
-\caja{defi}[Definición][primary!7][primary]
-\caja{Nota}[Nota][grisfondo][migris][no counter]
-\caja{Teorema}[Teorema][primary!7][primary]
+\caja{defi}[Definición][primary!12][primary]
+\caja{Nota}[Nota][white][migris][no counter]
+\caja{Teorema}[Teorema][primary!12][primary]
 
 %---------------
 %   Comandos
@@ -87,7 +98,7 @@
 \newcommand{\corolario}[2]{\begin{Corolario}{#1}{}#2\end{Corolario}}
 \newcommand{\lema}[2]{\begin{Lema}{#1}{}#2\end{Lema}}
 \newcommand{\preposicion}[2]{\begin{Prepo}{#1}{}#2\end{Prepo}}
-\newcommand{\nota}[2]{\begin{Nota}{#1}{}#2\end{Nota}}
+\newcommand{\nota}[2]{\begin{Nota}{#1}{}{\em\color{MyGrey}#2}\end{Nota}}
 \newcommand{\dfe}[2]{\begin{defi}{#1}{}#2\end{defi}}
 \newcommand{\demostracion}[1]{\begin{proof}[\color{primary}\textbf{Demostración.}] #1 \end{proof}}
 
